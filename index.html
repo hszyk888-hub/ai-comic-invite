@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI漫剧项目 · 学员邀请函</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 20px 16px;
+      color: #333;
+    }
+
+    .card {
+      max-width: 420px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    }
+
+    .header {
+      background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+      padding: 36px 24px;
+      text-align: center;
+      color: #fff;
+      position: relative;
+    }
+    .header::after {
+      content: "";
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      right: 0;
+      height: 30px;
+      background: #fff;
+      border-radius: 20px 20px 0 0;
+    }
+    .header .icon { font-size: 40px; margin-bottom: 10px; }
+    .header .company {
+      font-size: 12px;
+      opacity: 0.8;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+    }
+    .header h1 { font-size: 22px; font-weight: 700; letter-spacing: 2px; }
+    .header .project-tag {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      padding: 4px 16px;
+      border-radius: 20px;
+      font-size: 13px;
+      margin-top: 10px;
+      letter-spacing: 1px;
+    }
+    .header p { font-size: 13px; opacity: 0.85; margin-top: 10px; }
+
+    .form-body { padding: 10px 24px 30px; }
+
+    .section { margin-bottom: 22px; }
+    .section-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: #6a11cb;
+      padding-bottom: 8px;
+      margin-bottom: 14px;
+      border-bottom: 2px solid #f0ebff;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .field { margin-bottom: 16px; }
+    .field label {
+      display: block;
+      font-size: 13px;
+      color: #666;
+      margin-bottom: 6px;
+      font-weight: 500;
+    }
+    .field label .req { color: #e74c3c; margin-left: 2px; }
+
+    .field input[type="text"],
+    .field input[type="number"],
+    .field select,
+    .field textarea {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1.5px solid #e8e8e8;
+      border-radius: 10px;
+      font-size: 14px;
+      color: #333;
+      background: #fafafa;
+      transition: border-color 0.2s;
+      outline: none;
+      font-family: inherit;
+    }
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: #6a11cb;
+      background: #fff;
+    }
+    .field textarea { resize: vertical; min-height: 72px; }
+
+    .row { display: flex; gap: 12px; }
+    .row .field { flex: 1; }
+
+    .tag-group { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag-group label {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 6px 14px;
+      border: 1.5px solid #e0d6ff;
+      border-radius: 20px;
+      font-size: 13px;
+      color: #555;
+      cursor: pointer;
+      transition: all 0.2s;
+      user-select: none;
+    }
+    .tag-group input[type="checkbox"] { display: none; }
+    .tag-group input[type="checkbox"]:checked + span {
+      color: #6a11cb;
+      font-weight: 600;
+    }
+    .tag-group label:has(input:checked) {
+      border-color: #6a11cb;
+      background: #f3eeff;
+    }
+
+    .radio-group { display: flex; gap: 16px; }
+    .radio-group label {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 14px;
+      color: #555;
+      cursor: pointer;
+    }
+    .radio-group input[type="radio"] { accent-color: #6a11cb; }
+
+    .submit-btn {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: opacity 0.2s;
+    }
+    .submit-btn:active { opacity: 0.85; }
+
+    .footer-note {
+      text-align: center;
+      font-size: 11px;
+      color: #aaa;
+      margin-top: 16px;
+      line-height: 1.8;
+    }
+    .footer-note .company-name {
+      color: #999;
+      font-weight: 500;
+    }
+
+    .success-page {
+      display: none;
+      text-align: center;
+      padding: 60px 24px;
+    }
+    .success-page .icon { font-size: 60px; }
+    .success-page h2 { font-size: 20px; color: #333; margin: 16px 0 8px; }
+    .success-page p { font-size: 14px; color: #888; line-height: 1.8; }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <div class="header">
+    <div class="company">河南田宇网络科技有限公司</div>
+    <div class="icon">🎬</div>
+    <h1>AI 漫剧项目</h1>
+    <div class="project-tag">📩 学员邀请函</div>
+    <p>欢迎加入，请填写以下信息以便我们更好地为您服务</p>
+  </div>
+
+  <div class="form-body">
+
+    <div class="success-page" id="successPage">
+      <div class="icon">🎉</div>
+      <h2>提交成功</h2>
+      <p>感谢您的报名<br />我们会尽快与您联系，敬请期待！</p>
+    </div>
+
+    <form id="inviteForm">
+
+      <!-- ========================================== -->
+      <!-- 👇 把下面这行的邮箱换成你自己的邮箱 👇 -->
+      <input type="hidden" name="_to" value="724432106@qq.com" />
+      <!-- ========================================== -->
+      <input type="hidden" name="_subject" value="【AI漫剧项目】新学员报名" />
+
+      <div class="section">
+        <div class="section-title">📋 基本信息</div>
+        <div class="row">
+          <div class="field">
+            <label>姓名<span class="req">*</span></label>
+            <input type="text" name="姓名" placeholder="请输入姓名" required />
+          </div>
+          <div class="field">
+            <label>年龄<span class="req">*</span></label>
+            <input type="number" name="年龄" placeholder="如 25" min="1" max="120" required />
+          </div>
+        </div>
+        <div class="row">
+          <div class="field">
+            <label>性别<span class="req">*</span></label>
+            <div class="radio-group">
+              <label><input type="radio" name="性别" value="男" required /><span>男</span></label>
+              <label><input type="radio" name="性别" value="女" /><span>女</span></label>
+            </div>
+          </div>
+          <div class="field">
+            <label>民族</label>
+            <input type="text" name="民族" placeholder="如 汉族" />
+          </div>
+        </div>
+        <div class="field">
+          <label>籍贯</label>
+          <input type="text" name="籍贯" placeholder="如 河南省郑州市" />
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">🎯 教育与职业背景</div>
+        <div class="row">
+          <div class="field">
+            <label>最高学历<span class="req">*</span></label>
+            <select name="最高学历" required>
+              <option value="" disabled selected>请选择</option>
+              <option>高中及以下</option>
+              <option>大专</option>
+              <option>本科</option>
+              <option>硕士</option>
+              <option>博士</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>专业方向</label>
+            <input type="text" name="专业方向" placeholder="如 计算机科学" />
+          </div>
+        </div>
+        <div class="field">
+          <label>工作经历简述</label>
+          <textarea name="工作经历" placeholder="简要描述行业、岗位、年限等"></textarea>
+        </div>
+        <div class="field">
+          <label>擅长技能</label>
+          <input type="text" name="擅长技能" placeholder="如 Python / 视频剪辑 / 设计 / 运营" />
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">🤖 AI 相关经验</div>
+        <div class="field">
+          <label>对AI的了解程度<span class="req">*</span></label>
+          <select name="AI了解程度" required>
+            <option value="" disabled selected>请选择</option>
+            <option>完全不了解，零基础</option>
+            <option>听说过，但没用过</option>
+            <option>偶尔使用，了解基本概念</option>
+            <option>经常使用，有实操经验</option>
+            <option>深度用户 / 从业者</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>使用过哪些大模型（可多选）</label>
+          <div class="tag-group">
+            <label><input type="checkbox" name="使用过的大模型" value="ChatGPT" /><span>ChatGPT</span></label>
+            <label><input type="checkbox" name="使用过的大模型" value="Claude" /><span>Claude</span></label>
+            <label><input type="checkbox" name="使用过的大模型" value="文心一言" /><span>文心一言</span></label>
+            <label><input type="checkbox" name="使用过的大模型" value="通义千问" /><span>通义千问</span></label>
+            <label><input type="checkbox" name="使用过的大模型" value="Kimi" /><span>Kimi</span></label>
+            <label><input type="checkbox" name="使用过的大模型" value="豆包" /><span>豆包</span></label>
+            <label><input type="checkbox" name="使用过的大模型" value="DeepSeek" /><span>DeepSeek</span></label>
+            <label><input type="checkbox" name="使用过的大模型" value="Midjourney" /><span>Midjourney</span></label>
+            <label><input type="checkbox" name="使用过的大模型" value="SD" /><span>SD</span></label>
+            <label><input type="checkbox" name="使用过的大模型" value="其他" /><span>其他</span></label>
+          </div>
+        </div>
+        <div class="field">
+          <label>视频剪辑经验</label>
+          <div class="radio-group">
+            <label><input type="radio" name="剪辑经验" value="无经验" /><span>无经验</span></label>
+            <label><input type="radio" name="剪辑经验" value="初级" /><span>初级</span></label>
+            <label><input type="radio" name="剪辑经验" value="熟练" /><span>熟练</span></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">💡 学习意向</div>
+        <div class="field">
+          <label>学习AI的主要目的<span class="req">*</span></label>
+          <textarea name="学习目的" placeholder="如：提升工作效率 / 转行AI领域 / 兴趣探索 / 创业需要…" required></textarea>
+        </div>
+      </div>
+
+      <button type="submit" class="submit-btn" id="submitBtn">✨ 提交信息，加入学习营</button>
+      <div class="footer-note">
+        您的信息仅用于课程分组与教学安排，我们将严格保密 🔒
+        <br />
+        <span class="company-name">© 河南田宇网络科技有限公司</span>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+document.getElementById('inviteForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  var btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.textContent = '提交中...';
+
+  var formData = new FormData(this);
+
+  var lines = [];
+  var seen = {};
+  for (var pair of formData.entries()) {
+    if (pair[0].startsWith('_')) continue;
+    if (seen[pair[0]]) {
+      seen[pair[0]] += '、' + pair[1];
+      for (var i = 0; i < lines.length; i++) {
+        if (lines[i].startsWith(pair[0])) {
+          lines[i] = pair[0] + '：' + seen[pair[0]];
+        }
+      }
+    } else {
+      seen[pair[0]] = pair[1];
+      lines.push(pair[0] + '：' + pair[1]);
+    }
+  }
+
+  var email = formData.get('_to');
+  var subject = formData.get('_subject') || '新学员报名';
+  var body = lines.join('\n');
+
+  fetch('https://formsubmit.co/ajax/' + email, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    },
+    body: JSON.stringify({
+      _subject: subject,
+      message: body
+    })
+  })
+  .then(function(res) { return res.json(); })
+  .then(function(data) {
+    if (data.success === 'true' || data.success === true) {
+      document.getElementById('inviteForm').style.display = 'none';
+      document.getElementById('successPage').style.display = 'block';
+    } else {
+      throw new Error('fail');
+    }
+  })
+  .catch(function() {
+    btn.textContent = '提交失败，请重试';
+    btn.style.background = '#e74c3c';
+    btn.disabled = false;
+    setTimeout(function() {
+      btn.textContent = '✨ 提交信息，加入学习营';
+      btn.style.background = '';
+    }, 2000);
+  });
+});
+</script>
+
+</body>
+</html>
